@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Uma surpresa pra você ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    button {
+      padding: 15px 25px;
+      border: none;
+      border-radius: 10px;
+      background: white;
+      color: #ff4b5c;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ffe0e6;
+    }
+
+    #mensagem {
+      margin-top: 20px;
+      font-size: 22px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>💌 Clique aqui para receber uma surpresa</h2>
+    <button onclick="mostrarMensagem()">Clique aqui</button>
+
+    <div id="mensagem">
+      <p>Eu te amo muito ❤️</p>
+    </div>
+  </div>
+
+  <script>
+    function mostrarMensagem() {
+      document.getElementById("mensagem").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
