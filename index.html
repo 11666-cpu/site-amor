@@ -1,66 +1,173 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Uma surpresa pra você ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
-      text-align: center;
-      color: white;
-    }
+<meta charset="UTF-8">
+<title>Pra você minha bonequinha mais linda do mundo ❤️</title>
 
-    .container {
-      background: rgba(0, 0, 0, 0.2);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  font-family: Arial;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
 
-    button {
-      padding: 15px 25px;
-      border: none;
-      border-radius: 10px;
-      background: white;
-      color: #ff4b5c;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+/* tela de senha */
+#login {
+  position: absolute;
+  background: rgba(0,0,0,0.7);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    button:hover {
-      background: #ffe0e6;
-    }
+.login-box {
+  background: rgba(0,0,0,0.4);
+  padding: 30px;
+  border-radius: 20px;
+}
 
-    #mensagem {
-      margin-top: 20px;
-      font-size: 22px;
-      display: none;
-    }
-  </style>
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 10px;
+}
+
+.container {
+  background: rgba(0,0,0,0.25);
+  padding: 30px;
+  border-radius: 20px;
+  display: none;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: white;
+  color: #ff4b6e;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#texto {
+  margin-top: 20px;
+  font-size: 22px;
+  min-height: 60px;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  font-size: 20px;
+  animation: subir 4s linear infinite;
+}
+
+@keyframes subir {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
 </head>
+
 <body>
 
-  <div class="container">
-    <h2>💌 Clique aqui para receber uma surpresa</h2>
-    <button onclick="mostrarMensagem()">Clique aqui</button>
-
-    <div id="mensagem">
-      <p>Eu te amo muito ❤️</p>
-    </div>
+<!-- 🔐 TELA DE SENHA -->
+<div id="login">
+  <div class="login-box">
+    <h2>Digite a senha 💌</h2>
+<p style="font-size:14px; opacity:0.8;">
+  Dica: Annie é simplesmente a melhor do mundo rsrs 😏
+</p>
+<input type="text" id="senha" placeholder="Digite aqui">
+    <button onclick="verificar()">Entrar</button>
+    <p id="erro" style="color:red;"></p>
   </div>
+</div>
 
-  <script>
-    function mostrarMensagem() {
-      document.getElementById("mensagem").style.display = "block";
+<!-- 💖 SITE -->
+<div class="container" id="site">
+  <h2>Clique aqui coisinha linda 🥹 💌</h2>
+  <button onclick="proximo()">Começar</button>
+  <div id="texto"></div>
+</div>
+
+<audio id="musica" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const senhaCorreta = "Mateus é o melhor namorado do mundo";
+
+function verificar() {
+  let senha = document.getElementById("senha").value;
+
+  if (senha === senhaCorreta) {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("site").style.display = "block";
+  } else {
+    document.getElementById("erro").innerText = "Senha errada 😡";
+  }
+}
+
+const mensagens = [
+  "Oi, meu amor ❤️",
+  "Eu tenho uma coisa pra te falar...",
+  "Você é a melhor coisa que já me aconteceu 🥺",
+  "Cada momento com você é especial",
+  "E eu só queria te lembrar de uma coisa...",
+  "Eu te amo MUITO 💖"
+];
+
+let i = 0;
+
+function digitar(texto, el) {
+  el.innerHTML = "";
+  let j = 0;
+  let intervalo = setInterval(() => {
+    el.innerHTML += texto[j];
+    j++;
+    if (j >= texto.length) clearInterval(intervalo);
+  }, 40);
+}
+
+function proximo() {
+  const el = document.getElementById("texto");
+
+  if (i < mensagens.length) {
+    digitar(mensagens[i], el);
+    i++;
+
+    if (i === 1) {
+      document.getElementById("musica").play();
     }
-  </script>
+
+  } else {
+    el.innerHTML = "Agora me dá um beijo risos risos ❤️";
+  }
+}
+
+/* corações */
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (15 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 4000);
+}, 300);
+</script>
 
 </body>
 </html>
