@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Pra você minha bonequinha ❤️</title>
+<title>Pra você minha bonequinha LINDAAAAA❤️</title>
 
 <style>
 body {
@@ -18,7 +18,7 @@ body {
   overflow: hidden;
 }
 
-/* LOGIN */
+/* 🔐 LOGIN */
 #login {
   position: absolute;
   background: rgba(0,0,0,0.75);
@@ -39,10 +39,9 @@ input {
   padding: 10px;
   border-radius: 8px;
   border: none;
-  margin-top: 10px;
 }
 
-/* SITE */
+/* 💖 SITE */
 .container {
   background: rgba(0,0,0,0.25);
   padding: 30px;
@@ -56,7 +55,6 @@ button {
   border-radius: 10px;
   background: white;
   color: #ff4b6e;
-  font-size: 16px;
   cursor: pointer;
 }
 
@@ -66,17 +64,7 @@ button {
   min-height: 80px;
 }
 
-/* animação */
-.fade {
-  animation: fadeIn 0.8s;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px);}
-  to { opacity: 1; transform: translateY(0);}
-}
-
-/* corações */
+/* ❤️ corações */
 .heart {
   position: absolute;
   bottom: 0;
@@ -84,11 +72,10 @@ button {
 }
 
 @keyframes subir {
-  0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(-100vh); opacity: 0; }
 }
 
-/* frases */
+/* 💬 frases */
 .frase {
   position: absolute;
   bottom: 0;
@@ -112,12 +99,12 @@ button {
 
 <body>
 
-<!-- LOGIN -->
+<!-- 🔐 LOGIN -->
 <div id="login">
   <div class="login-box">
     <h2>Digite a senha 💌</h2>
     <p style="font-size:14px; opacity:0.8;">
-      Dica: Annie é simplesmente a melhor do mundoooooooooooo
+      Dica: Annie é simplesmente a melhor do MUNDOOOOOOOOO TE AMO TE AMO 
     </p>
     <input type="text" id="senha">
     <br><br>
@@ -126,15 +113,21 @@ button {
   </div>
 </div>
 
-<!-- SITE -->
+<!-- 💖 SITE -->
 <div class="container" id="site">
-  <h2>Tenho algo pra você minha neném 💖</h2>
-  <button id="btn" onclick="proximo()">Clique aqui</button>
+  <h2>Clique aqui 💖</h2>
+  <button id="btn" onclick="proximo()">Começar</button>
   <div id="texto"></div>
 </div>
 
+<!-- 🎧 música inicial -->
 <audio id="musica" loop>
   <source src="Waiting(MP3_160K).mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🎶 música final -->
+<audio id="musica2" loop>
+  <source src="vrezia_7630106997668.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -144,32 +137,36 @@ function verificar() {
   if (document.getElementById("senha").value === senhaCorreta) {
     document.getElementById("login").style.display = "none";
     document.getElementById("site").style.display = "block";
-
-    // 🎧 música começa aqui
     document.getElementById("musica").play();
   } else {
-    document.getElementById("erro").innerText = "Senha errada, gostosa kdkdkdkkdk";
+    document.getElementById("erro").innerText = "Senha errada 😡";
   }
 }
 
+/* 💖 textos */
 const mensagens = [
   "Oi, minha bonequinha ❤️",
   "Eu tava aqui pensando em você...",
-  "E em como você mudou tudo pra melhor",
-  "Sério, eu nunca imaginei sentir algo assim",
-  "Você me faz bem de um jeito que ninguém nunca fez",
-  "Cada detalhe seu me encanta 🥺",
-  "Seu jeito, sua voz, seu carinho...",
-  "E eu percebi uma coisa...",
-  "Eu quero você comigo sempre",
-  "Não importa o que aconteça",
-  "Porque eu te amo...",
-  "Eu te amo MUITO, delícia 💖"
+  "E sério, você é perfeita",
+  "Linda, maravilhosa, incrível",
+  "Você me faz feliz de um jeito inexplicável",
+  "Seu sorriso é a coisa mais linda que existe",
+  "Eu amo cada detalhe seu 🥺",
+  "Seu jeitinho, sua voz, tudo em você",
+  "Você é minha paz",
+  "Minha felicidade",
+  "Minha pessoa favorita no mundo",
+  "Eu nunca quero te perder",
+  "Porque você é única",
+  "E ninguém chega perto de você",
+  "Eu te amo...",
+  "Eu te amo MUITOOOO 💖"
 ];
 
 let i = 0;
 
-function digitar(texto, el) {
+function digitar(texto) {
+  const el = document.getElementById("texto");
   el.innerHTML = "";
   let j = 0;
   let intervalo = setInterval(() => {
@@ -179,25 +176,60 @@ function digitar(texto, el) {
   }, 35);
 }
 
+/* 🔉 diminuir volume */
+function diminuirVolume(audio, callback) {
+  let vol = audio.volume;
+
+  let intervalo = setInterval(() => {
+    if (vol > 0.05) {
+      vol -= 0.05;
+      audio.volume = vol;
+    } else {
+      clearInterval(intervalo);
+      audio.pause();
+      if (callback) callback();
+    }
+  }, 200);
+}
+
 function proximo() {
-  const el = document.getElementById("texto");
   const btn = document.getElementById("btn");
 
   if (i < mensagens.length) {
-    el.classList.add("fade");
-    digitar(mensagens[i], el);
+    digitar(mensagens[i]);
     i++;
 
     btn.innerText = "Continuar 💌";
 
+    if (i === mensagens.length - 2) {
+      diminuirVolume(document.getElementById("musica"));
+    }
+
     if (i === mensagens.length) {
+      diminuirVolume(document.getElementById("musica"), () => {
+        let m2 = document.getElementById("musica2");
+        m2.volume = 0;
+        m2.play();
+
+        let v = 0;
+        let fade = setInterval(() => {
+          if (v < 1) {
+            v += 0.05;
+            m2.volume = v;
+          } else {
+            clearInterval(fade);
+          }
+        }, 200);
+      });
+
+      chuvaDeFotos();
       efeitosFinais();
-      chuvaDeFotos(); // 📸 ativa fotos
-      btn.innerText = "Mais uma coisinha...";
+      btn.innerText = "Última mensagem...";
     }
 
   } else {
-    el.innerHTML = "Agora me dá um beijo... risos risos (manda foto do peitinho)❤️";
+    document.getElementById("texto").innerHTML =
+      "Agora me dá um beijo... risos risos (manda peitinho rsrs)❤️";
     btn.style.display = "none";
   }
 }
@@ -209,19 +241,20 @@ setInterval(() => {
   heart.innerHTML = "❤️";
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = (15 + Math.random() * 20) + "px";
-  document.body.appendChild(heart);
 
+  document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 4000);
 }, 300);
 
-/* 💬 frases */
+/* 💬 frases flutuando */
 function efeitosFinais() {
   const frases = [
     "te amo ❤️",
-    "risos risos ",
-    "te amo delícia 😋❤️",
-    "minha bonequinha 💖",
-    "vc é perfeita 🥺"
+    "minha vida 💖",
+    "perfeita 🥺",
+    "minha bonequinha 💕",
+    "vc é tudo pra mim 💘",
+    "te amo delícia 😏"
   ];
 
   setInterval(() => {
@@ -232,7 +265,6 @@ function efeitosFinais() {
     f.style.fontSize = (16 + Math.random() * 10) + "px";
 
     document.body.appendChild(f);
-
     setTimeout(() => f.remove(), 5000);
   }, 700);
 }
@@ -240,9 +272,10 @@ function efeitosFinais() {
 /* 📸 fotos */
 function chuvaDeFotos() {
   const fotos = [
-  "IMG-20260418-WA0135.jpg",
-  "IMG-20260419-WA0006.jpg"
-];
+    "IMG-20260418-WA0135.jpg",
+    "IMG-20260419-WA0006.jpg"
+  ];
+
   setInterval(() => {
     let img = document.createElement("img");
     img.src = fotos[Math.floor(Math.random() * fotos.length)];
@@ -252,7 +285,6 @@ function chuvaDeFotos() {
     img.style.left = Math.random() * 90 + "vw";
 
     document.body.appendChild(img);
-
     setTimeout(() => img.remove(), 6000);
   }, 300);
 }
