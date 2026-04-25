@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Pra você minha bonequinha LINDAAAAA❤️</title>
+<title>Pra você minha bonequinha te amo te amo ❤️</title>
 
 <style>
 body {
@@ -18,7 +18,6 @@ body {
   overflow: hidden;
 }
 
-/* 🔐 LOGIN */
 #login {
   position: absolute;
   background: rgba(0,0,0,0.75);
@@ -41,7 +40,6 @@ input {
   border: none;
 }
 
-/* 💖 SITE */
 .container {
   background: rgba(0,0,0,0.25);
   padding: 30px;
@@ -99,13 +97,10 @@ button {
 
 <body>
 
-<!-- 🔐 LOGIN -->
 <div id="login">
   <div class="login-box">
-    <h2>Digite a senha 💌</h2>
-    <p style="font-size:14px; opacity:0.8;">
-      Dica: Annie é simplesmente a melhor do MUNDOOOOOOOOO TE AMO TE AMO 
-    </p>
+    <h2>Digite a senha mulher da minha vida 💗</h2>
+    <p>Dica: Annie é simplesmente a melhor do MUNDOOO </p>
     <input type="text" id="senha">
     <br><br>
     <button onclick="verificar()">Entrar</button>
@@ -113,9 +108,8 @@ button {
   </div>
 </div>
 
-<!-- 💖 SITE -->
 <div class="container" id="site">
-  <h2>Clique aqui 💖</h2>
+  <h2>Clique aqui coisinha gostosa 💖</h2>
   <button id="btn" onclick="proximo()">Começar</button>
   <div id="texto"></div>
 </div>
@@ -125,9 +119,9 @@ button {
   <source src="Waiting(MP3_160K).mp3" type="audio/mpeg">
 </audio>
 
-<!-- 🎶 música final -->
+<!-- 🎶 música final (CORRIGIDA) -->
 <audio id="musica2" loop>
-  <source src="vrezia_7630106997668.mp3" type="audio/mpeg">
+  <source src="vrezia_7630106997668449554.mp3.m4a" type="audio/mp4">
 </audio>
 
 <script>
@@ -143,24 +137,19 @@ function verificar() {
   }
 }
 
-/* 💖 textos */
 const mensagens = [
   "Oi, minha bonequinha ❤️",
   "Eu tava aqui pensando em você...",
-  "E sério, você é perfeita",
+  "Você é perfeita",
   "Linda, maravilhosa, incrível",
-  "Você me faz feliz de um jeito inexplicável",
-  "Seu sorriso é a coisa mais linda que existe",
+  "Você me faz muito feliz",
   "Eu amo cada detalhe seu 🥺",
-  "Seu jeitinho, sua voz, tudo em você",
   "Você é minha paz",
   "Minha felicidade",
-  "Minha pessoa favorita no mundo",
+  "Minha pessoa favorita",
   "Eu nunca quero te perder",
-  "Porque você é única",
-  "E ninguém chega perto de você",
-  "Eu te amo...",
-  "Eu te amo MUITOOOO 💖"
+  "Porque eu te amo...",
+  "Eu te amo MUITOOOOOOOOO 💖"
 ];
 
 let i = 0;
@@ -176,7 +165,6 @@ function digitar(texto) {
   }, 35);
 }
 
-/* 🔉 diminuir volume */
 function diminuirVolume(audio, callback) {
   let vol = audio.volume;
 
@@ -198,8 +186,6 @@ function proximo() {
   if (i < mensagens.length) {
     digitar(mensagens[i]);
     i++;
-
-    btn.innerText = "Continuar 💌";
 
     if (i === mensagens.length - 2) {
       diminuirVolume(document.getElementById("musica"));
@@ -224,12 +210,11 @@ function proximo() {
 
       chuvaDeFotos();
       efeitosFinais();
-      btn.innerText = "Última mensagem...";
     }
 
   } else {
     document.getElementById("texto").innerHTML =
-      "Agora me dá um beijo... risos risos (manda peitinho rsrs)❤️";
+      "Agora me dá um beijo (manda peitinho rsrs)❤️";
     btn.style.display = "none";
   }
 }
@@ -240,21 +225,19 @@ setInterval(() => {
   heart.className = "heart";
   heart.innerHTML = "❤️";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (15 + Math.random() * 20) + "px";
 
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 4000);
 }, 300);
 
-/* 💬 frases flutuando */
+/* 💬 frases */
 function efeitosFinais() {
   const frases = [
     "te amo ❤️",
     "minha vida 💖",
     "perfeita 🥺",
     "minha bonequinha 💕",
-    "vc é tudo pra mim 💘",
-    "te amo delícia 😏"
+    "vc é tudo pra mim 💘"
   ];
 
   setInterval(() => {
@@ -262,7 +245,6 @@ function efeitosFinais() {
     f.className = "frase";
     f.innerHTML = frases[Math.floor(Math.random() * frases.length)];
     f.style.left = Math.random() * 100 + "vw";
-    f.style.fontSize = (16 + Math.random() * 10) + "px";
 
     document.body.appendChild(f);
     setTimeout(() => f.remove(), 5000);
