@@ -104,7 +104,7 @@ button {
   <div class="login-box">
     <h2>Digite a senha 💌</h2>
     <p style="font-size:14px; opacity:0.8;">
-      Dica: Annie é simplesmente a melhor do mundo 😏
+      Dica: Annie é simplesmente a melhor do mundo risos risos 
     </p>
     <input type="text" id="senha">
     <br><br>
@@ -115,7 +115,7 @@ button {
 
 <!-- SITE -->
 <div class="container" id="site">
-  <h2>Tenho algo pra você 💖</h2>
+  <h2>Tenho algo pra você neném 💖</h2>
   <button id="btn" onclick="proximo()">Clique aqui</button>
   <div id="texto"></div>
 </div>
@@ -127,11 +127,13 @@ button {
 <script>
 const senhaCorreta = "Mateus é o melhor namorado do mundo";
 
-function verificar() {
-  if (document.getElementById("senha").value === senhaCorreta) {
-    document.getElementById("login").style.display = "none";
-    document.getElementById("site").style.display = "block";
-  } else {
+function verificar() if (senha === senhaCorreta) {
+  document.getElementById("login").style.display = "none";
+  document.getElementById("site").style.display = "block";
+
+  // 🎧 começa a música quando entrar
+  document.getElementById("musica").play();
+}
     document.getElementById("erro").innerText = "Senha errada 😡";
   }
 }
@@ -182,7 +184,7 @@ function proximo() {
     }
 
   } else {
-    el.innerHTML = "Agora me dá um beijo... risos risos 😳❤️";
+    el.innerHTML = "Agora me dá um beijo... risos risos ❤️";
     btn.style.display = "none";
   }
 }
@@ -203,7 +205,7 @@ setInterval(() => {
 function efeitosFinais() {
   const frases = [
     "te amo ❤️",
-    "risos risos 😆",
+    "risos risos ",
     "te amo delícia 😏❤️",
     "minha bonequinha 💖",
     "vc é perfeita 🥺"
