@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Pra você minha bonequinha mais linda do mundo ❤️</title>
+<title>Pra você minha bonequinha ❤️</title>
 
 <style>
 body {
@@ -18,10 +18,10 @@ body {
   overflow: hidden;
 }
 
-/* tela de senha */
+/* LOGIN */
 #login {
   position: absolute;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
   width: 100%;
   height: 100%;
   display: flex;
@@ -42,6 +42,7 @@ input {
   margin-top: 10px;
 }
 
+/* SITE */
 .container {
   background: rgba(0,0,0,0.25);
   padding: 30px;
@@ -62,13 +63,23 @@ button {
 #texto {
   margin-top: 20px;
   font-size: 22px;
-  min-height: 60px;
+  min-height: 80px;
 }
 
+/* animação fade */
+.fade {
+  animation: fadeIn 0.8s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* corações */
 .heart {
   position: absolute;
   bottom: 0;
-  font-size: 20px;
   animation: subir 4s linear infinite;
 }
 
@@ -76,28 +87,36 @@ button {
   0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(-100vh); opacity: 0; }
 }
+
+/* frases flutuando */
+.frase {
+  position: absolute;
+  bottom: 0;
+  animation: subir 5s linear forwards;
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🔐 TELA DE SENHA -->
+<!-- LOGIN -->
 <div id="login">
   <div class="login-box">
     <h2>Digite a senha 💌</h2>
-<p style="font-size:14px; opacity:0.8;">
-  Dica: Annie é simplesmente a melhor do mundo risos risos 
-</p>
-<input type="text" id="senha" placeholder="Digite aqui">
+    <p style="font-size:14px; opacity:0.8;">
+      Dica: Annie é simplesmente a melhor do mundo 😏
+    </p>
+    <input type="text" id="senha">
+    <br><br>
     <button onclick="verificar()">Entrar</button>
     <p id="erro" style="color:red;"></p>
   </div>
 </div>
 
-<!-- 💖 SITE -->
+<!-- SITE -->
 <div class="container" id="site">
-  <h2>Clique aqui coisinha linda 🥹 💌</h2>
-  <button onclick="proximo()">Começar</button>
+  <h2>Tenho algo pra você 💖</h2>
+  <button id="btn" onclick="proximo()">Clique aqui</button>
   <div id="texto"></div>
 </div>
 
@@ -109,9 +128,7 @@ button {
 const senhaCorreta = "Mateus é o melhor namorado do mundo";
 
 function verificar() {
-  let senha = document.getElementById("senha").value;
-
-  if (senha === senhaCorreta) {
+  if (document.getElementById("senha").value === senhaCorreta) {
     document.getElementById("login").style.display = "none";
     document.getElementById("site").style.display = "block";
   } else {
@@ -120,11 +137,17 @@ function verificar() {
 }
 
 const mensagens = [
-  "Oi, meu amor ❤️",
-  "Eu tenho uma coisa pra te falar...",
-  "Você é a melhor coisa que já me aconteceu 🥺",
-  "Cada momento com você é especial, gostosa",
-  "E eu só queria te lembrar de uma coisa...",
+  "Oi, minha bonequinha ❤️",
+  "Eu tava aqui pensando em você...",
+  "E em como você mudou tudo pra melhor",
+  "Sério, eu nunca imaginei sentir algo assim",
+  "Você me faz bem de um jeito que ninguém nunca fez",
+  "E cada detalhe seu me encanta...",
+  "Seu jeito, sua voz, seu carinho 🥺",
+  "E eu percebi uma coisa...",
+  "Eu quero você comigo sempre",
+  "Não importa o que aconteça",
+  "Porque eu te amo...",
   "Eu te amo MUITO 💖"
 ];
 
@@ -137,22 +160,30 @@ function digitar(texto, el) {
     el.innerHTML += texto[j];
     j++;
     if (j >= texto.length) clearInterval(intervalo);
-  }, 40);
+  }, 35);
 }
 
 function proximo() {
   const el = document.getElementById("texto");
+  const btn = document.getElementById("btn");
 
   if (i < mensagens.length) {
+    el.classList.add("fade");
     digitar(mensagens[i], el);
     i++;
 
-    if (i === 1) {
+    btn.innerText = "Continuar 💌";
+
+    // FINAL
+    if (i === mensagens.length) {
       document.getElementById("musica").play();
+      efeitosFinais();
+      btn.innerText = "Mais uma coisinha...";
     }
 
   } else {
-    el.innerHTML = "Agora me dá um beijo risos risos ❤️";
+    el.innerHTML = "Agora me dá um beijo... risos risos 😳❤️";
+    btn.style.display = "none";
   }
 }
 
@@ -167,6 +198,29 @@ setInterval(() => {
 
   setTimeout(() => heart.remove(), 4000);
 }, 300);
+
+/* frases finais */
+function efeitosFinais() {
+  const frases = [
+    "te amo ❤️",
+    "risos risos 😆",
+    "te amo delícia 😏❤️",
+    "minha bonequinha 💖",
+    "vc é perfeita 🥺"
+  ];
+
+  setInterval(() => {
+    let f = document.createElement("div");
+    f.className = "frase";
+    f.innerHTML = frases[Math.floor(Math.random() * frases.length)];
+    f.style.left = Math.random() * 100 + "vw";
+    f.style.fontSize = (16 + Math.random() * 10) + "px";
+
+    document.body.appendChild(f);
+
+    setTimeout(() => f.remove(), 5000);
+  }, 700);
+}
 </script>
 
 </body>
